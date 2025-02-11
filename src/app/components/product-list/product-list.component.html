@@ -19,8 +19,6 @@
     <tbody>
       <tr *ngFor="let product of products">
         <td>{{ product.name }}</td>
-        <td>{{ product.data.year }}</td>
-        <td>{{ product.data.price | currency }}</td>
         <td>
           <button
             (click)="router.navigate(['/products', product.id])"

@@ -5,7 +5,7 @@
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
       <div class="product-data" *ngIf="product.data">
-        <div *ngFor="let key of getDataKeys()">
+        <div *ngFor="let key of getProductDataKeys()">
           <strong>{{ key }}:</strong> {{ product.data[key] }}
         </div>
       </div>

@@ -36,7 +36,7 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  getDataKeys(): string[] {
+  getProductDataKeys(): string[] {
     return this.product?.data ? Object.keys(this.product.data) : [];
   }
 }

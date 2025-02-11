@@ -20,9 +20,6 @@ export class ProductFormComponent implements OnInit {
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      category: ['', Validators.required],
-      price: ['', [Validators.required, Validators.min(0)]],
-      description: [''],
     });
   }
 
@@ -52,5 +49,11 @@ export class ProductFormComponent implements OnInit {
         });
       }
     }
+  }
+
+  getProductDataKeys(): string[] {
+    return this.productForm.get('data')?.value
+      ? Object.keys(this.productForm.get('data')?.value)
+      : [];
   }
 }

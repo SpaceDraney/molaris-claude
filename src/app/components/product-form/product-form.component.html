@@ -12,33 +12,11 @@
       />
     </div>
 
-    <div class="mb-3">
-      <label for="category" class="form-label">Category</label>
-      <input
-        type="text"
-        class="form-control"
-        id="category"
-        formControlName="category"
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="price" class="form-label">Price</label>
-      <input
-        type="number"
-        class="form-control"
-        id="price"
-        formControlName="price"
-      />
-    </div>
-
-    <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
-      <textarea
-        class="form-control"
-        id="description"
-        formControlName="description"
-      ></textarea>
+    <div class="form-group" *ngIf="productForm.get('data')?.value">
+      <label>Additional Data</label>
+      <div class="data-item" *ngFor="let key of getProductDataKeys()">
+        <strong>{{ key }}:</strong> {{ productForm.get("data")?.value[key] }}
+      </div>
     </div>
 
     <button

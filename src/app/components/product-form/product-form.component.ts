@@ -20,6 +20,7 @@ export class ProductFormComponent implements OnInit {
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
+      data: this.fb.group({}),
     });
   }
 

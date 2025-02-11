@@ -15,7 +15,13 @@
     <div class="form-group" *ngIf="productForm.get('data')?.value">
       <label>Additional Data</label>
       <div class="data-item" *ngFor="let key of getProductDataKeys()">
-        <strong>{{ key }}:</strong> {{ productForm.get("data")?.value[key] }}
+        <label for="{{ key }}" class="form-label">{{ key }}</label>
+        <input
+          type="text"
+          class="form-control"
+          [id]="key"
+          [formControlName]="key"
+        />
       </div>
     </div>
 

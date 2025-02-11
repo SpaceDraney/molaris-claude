@@ -2,6 +2,6 @@ export interface Product {
   id: number;
   name: string;
   data?: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }

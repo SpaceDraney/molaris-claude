@@ -1,0 +1,59 @@
+<div class="container">
+  <h2>{{ isEditMode ? "Edit" : "Add" }} Product</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <input
+        type="text"
+        class="form-control"
+        id="category"
+        formControlName="category"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        formControlName="price"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        formControlName="description"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!productForm.valid"
+    >
+      {{ isEditMode ? "Update" : "Create" }} Product
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary ms-2"
+      (click)="router.navigate(['/products'])"
+    >
+      Cancel
+    </button>
+  </form>
+</div>

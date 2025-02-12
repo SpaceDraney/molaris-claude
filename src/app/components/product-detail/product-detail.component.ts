@@ -35,8 +35,4 @@ export class ProductDetailComponent implements OnInit {
       });
     }
   }
-
-  getProductDataKeys(): string[] {
-    return this.product?.data ? Object.keys(this.product.data) : [];
-  }
 }

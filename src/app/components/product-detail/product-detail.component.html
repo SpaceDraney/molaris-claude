@@ -1,33 +1,29 @@
 @if (product) {
-  <div class="container">
-    <h2>Product Details</h2>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        @if (product.data) {
-          <div class="product-data">
-            @for (key of getProductDataKeys(); track key) {
-              <div>
-                <strong>{{ key }}:</strong> {{ product.data[key] }}
-              </div>
-            }
-          </div>
-        }
+<div class="container">
+  <h2>Product Details</h2>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      @if (product.data) {
+      <div *ngFor="let item of product.data | keyvalue">
+        <strong>{{ item.key }}:</strong> {{ item.value }}
       </div>
-    </div>
-    <div class="mt-3">
-      <button
-        (click)="router.navigate(['/products', product.id, 'edit'])"
-        class="btn btn-warning me-2"
-        >
-        Edit
-      </button>
-      <button (click)="deleteProduct()" class="btn btn-danger me-2">
-        Delete
-      </button>
-      <button (click)="router.navigate(['/products'])" class="btn btn-secondary">
-        Back to List
-      </button>
+      }
     </div>
   </div>
+  <div class="mt-3">
+    <button
+      (click)="router.navigate(['/products', product.id, 'edit'])"
+      class="btn btn-warning me-2"
+    >
+      Edit
+    </button>
+    <button (click)="deleteProduct()" class="btn btn-danger me-2">
+      Delete
+    </button>
+    <button (click)="router.navigate(['/products'])" class="btn btn-secondary">
+      Back to List
+    </button>
+  </div>
+</div>
 }

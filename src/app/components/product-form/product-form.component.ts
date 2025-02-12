@@ -20,7 +20,7 @@ export class ProductFormComponent implements OnInit {
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      data: this.fb.group({}),
+      data: [''],
     });
   }
 
@@ -50,11 +50,5 @@ export class ProductFormComponent implements OnInit {
         });
       }
     }
-  }
-
-  getProductDataKeys(): string[] {
-    return this.productForm.get('data')?.value
-      ? Object.keys(this.productForm.get('data')?.value)
-      : [];
   }
 }

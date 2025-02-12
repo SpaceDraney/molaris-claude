@@ -10,38 +10,32 @@
         id="name"
         formControlName="name"
         />
-      </div>
-
-      @if (productForm.get('data')?.value) {
-        <div class="form-group">
-          <label>Additional Data</label>
-          @for (key of getProductDataKeys(); track key) {
-            <div class="data-item">
-              <label for="{{ key }}" class="form-label">{{ key }}</label>
-              <input
-                type="text"
-                class="form-control"
-                [id]="key"
-                [formControlName]="key"
-                />
-              </div>
-            }
-          </div>
-        }
-
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="!productForm.valid"
-          >
-          {{ isEditMode ? "Update" : "Create" }} Product
-        </button>
-        <button
-          type="button"
-          class="btn btn-secondary ms-2"
-          (click)="router.navigate(['/products'])"
-          >
-          Cancel
-        </button>
-      </form>
     </div>
+
+    @if (productForm.get('data')?.value) {
+      @for (item of productForm.get('data')?.value | keyvalue; track item) {
+        <div>
+          <div class="mb-3">
+            <label for="name" class="form-label">{{ item.key }}</label>
+            <input type="text" class="form-control" [value]="item.value" />
+          </div>
+        </div>
+      }
+    }
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!productForm.valid"
+      >
+      {{ isEditMode ? "Update" : "Create" }} Product
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary ms-2"
+      (click)="router.navigate(['/products'])"
+      >
+      Cancel
+    </button>
+  </form>
+</div>
